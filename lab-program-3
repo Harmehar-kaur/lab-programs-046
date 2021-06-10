@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+// C recursive function to solve tower of hanoi puzzle
+void tower(int n, char from, char to, char spare);
+int main()
+{
+    int n = 4;               // Number of disks
+    tower(n, 'A', 'C', 'B'); // A, B and C are names of rods
+    return 0;
+}
+tower(int n, char from, char to, char spare)
+{
+    if (n == 1)
+    {
+        printf("\n Move disk 1 from rod %c to rod %c", from, to);
+        return;
+    }
+    tower(n - 1, from, spare, to);
+    printf("\n Move disk %d from rod %c to rod %c", n, from, to);
+    tower(n - 1, spare, to, from);
+}
